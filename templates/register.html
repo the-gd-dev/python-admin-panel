@@ -12,17 +12,17 @@
     height: 100vh;
     width: 100%;
   }
-
-  .login-form {
+  .signup-form .form-heading {
+    margin-bottom: 1em;
+  }
+  .signup-form {
     padding: 25px;
     background-color: white;
     border-radius: 18px;
     width: 80%;
   }
-  .login-form h4 {
-    margin-bottom: 1em;
-  }
-  .login-form button,
+
+  .signup-form .signup-btn,
   .form-control {
     width: 100%;
     height: 40px;
@@ -31,16 +31,16 @@
     border-radius: 8px;
     font-size: 16px;
   }
-  .login-form .login-btn:hover {
+  .signup-form .signup-btn:hover {
     /* background-color: #bd5401; */
     color: #ffffff;
   }
-  .login-form .login-btn:hover .background-animate {
+  .signup-form .signup-btn:hover .background-animate {
     height: 100%;
     width: 100%;
     opacity: 1;
   }
-  .login-form .login-btn .background-animate {
+  .signup-form .signup-btn .background-animate {
     background-color: #bd5401;
     position: absolute;
     z-index: 5;
@@ -49,13 +49,13 @@
     opacity: 0;
     transition: all 0.2s ease-in-out;
   }
-  .login-form .login-btn .btn-title {
+  .signup-form .signup-btn .btn-title {
     position: relative;
     text-align: center;
     width: 100%;
     z-index: 10;
   }
-  .login-form .login-btn {
+  .signup-form .signup-btn {
     cursor: pointer;
     position: relative;
     overflow: hidden;
@@ -63,28 +63,28 @@
     align-items: center;
     justify-content: flex-start;
   }
-  .login-form .form-control {
+  .signup-form .form-control {
     background-color: #f3f3f3;
     margin-bottom: 1em;
     text-indent: 1em;
   }
   @media screen and (min-width: 768px) {
-    .login-form {
+    .signup-form {
       width: 35%;
     }
   }
   @media screen and (min-width: 1024px) {
-    .login-form {
+    .signup-form {
       width: 30%;
     }
   }
   @media screen and (min-width: 1200px) {
-    .login-form {
+    .signup-form {
       width: 25%;
     }
   }
   @media screen and (min-width: 1500px) {
-    .login-form {
+    .signup-form {
       width: 18%;
     }
   }
@@ -111,7 +111,9 @@
     column-gap: 15px;
     padding: 16px;
   }
-  
+  .app-links ul .link:hover .bar {
+    width: 100%;
+  }
   .app-links ul .link .bar {
     height: 2px;
     width: 0;
@@ -134,23 +136,6 @@
   .app-links ul .link.active .bar {
     width: 100% !important;
   }
-  .app-links ul .link:hover .bar {
-    width: 100% ;
-  }
-  .forgot-password{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 1em;
-    padding: 0 6px;
-  }
-  .forgot-password a {
-    cursor: pointer;
-    text-decoration: none;
-    color: #bd5401;
-    font-size: 1em;
-    font-weight: 600;
-  }
 </style>
 {% endblock %} {% block content %}
 <div class="container">
@@ -161,32 +146,34 @@
 
     <div class="app-links">
       <ul>
-        <li class="link active">
+        <li class="link">
           <a href="/login">Login</a>
           <div class="bar"></div>
         </li>
-        <li class="link">
+        <li class="link active">
           <a href="/register">Register</a>
           <div class="bar"></div>
         </li>
       </ul>
     </div>
   </div>
-  <div class="login-form">
-    <h4>Admin Panel | Login</h4>
+  <div class="signup-form">
+    <div class="form-heading">
+      <h4>Admin Panel</h4>
+      <p>Request for admin access</p>
+    </div>
+
     <form action="" method="post" onsubmit="return false">
-      <input type="text" placeholder="Email Address or UserId" class="form-control" />
-      <input type="password" class="form-control" placeholder="Password" />
-      <div class="forgot-password">
-        <label class="check-box">
-          <input type="checkbox" name="" id="" />
-          keep me logged in
-        </label>
-        <a href="/forgot-password">forgot password</a>
-      </div>
-      <button class="login-btn">
+      <input type="text" placeholder="First Name" class="form-control" />
+      <input type="text" class="form-control" placeholder="Last Name" />
+      <input type="text" placeholder="Email Address" class="form-control" />
+      <input type="text" class="form-control" placeholder="User Id" />
+      <input type="password" placeholder="Password" class="form-control" />
+      <input type="password" class="form-control" placeholder="Confirm Password" />
+
+      <button class="signup-btn">
         <div class="background-animate"></div>
-        <div class="btn-title">Login</div>
+        <div class="btn-title">Request</div>
       </button>
     </form>
   </div>
