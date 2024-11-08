@@ -1,0 +1,118 @@
+{% extends 'base.html' %} {% block head %}
+<style>
+  .app {
+    background-color: #bd5401;
+    height: 100vh;
+  }
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: inherit;
+  }
+  .app-title h1 {
+    font-family: "Callibri", sans-serif;
+    text-align: center;
+    color: #d2d2d2;
+    font-weight: 600;
+    font-style: normal;
+    font-size: 3em;
+    font-variation-settings: "ROND" 0;
+    margin-bottom: 0.125em;
+  }
+  .app-title p {
+    color: #d2d2d2;
+    text-align: center;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 1.5em;
+    font-variation-settings: "ROND" 0;
+  }
+  .app-links {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2em;
+  }
+  .app-links ul {
+    list-style: none;
+    display: flex;
+    column-gap: 15px;
+    padding: 16px;
+  }
+  .app-links ul .link:hover .bar {
+    width: 100%;
+  }
+  .app-links ul .link .bar {
+    height: 2px;
+    width: 0;
+    background: #d2d2d2;
+    transition: all 0.2s ease-in-out;
+    align-self: center;
+  }
+  .app-links ul .link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .app-links ul .link a {
+    cursor: pointer;
+    text-decoration: none;
+    color: #d2d2d2;
+    font-size: 1.25em;
+  }
+  .app-title {
+    position: relative;
+    height: auto;
+  }
+  .container.animated {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+  }
+  .app-title,
+  .app-links {
+    position: relative;
+    transition: all 0.3s ease-in-out;
+    width: 100%;
+  }
+  .app-title.animate h1 {
+    font-size: 1.25em;
+    font-weight: 600;
+  }
+  .app-title.animate p {
+    opacity: 0;
+  }
+  .app-links.animate {
+    top: -48%;
+    right: -10%;
+  }
+  .app-title.animate {
+    top: -43%;
+    left: -10%;
+  }
+</style>
+{% endblock %}
+{% block content %}
+<div class="container animated">
+  <div class="app-title animate">
+    <h1>Python Admin Panel</h1>
+    <p>Python Based Admin Panel For Employee Management.</p>
+  </div>
+  <div class="app-links animate">
+    <ul>
+      <li class="link">
+        <a href="/login">Login</a>
+        <div class="bar"></div>
+      </li>
+      <li class="link">
+        <a href="/signup">Register</a>
+        <div class="bar"></div>
+      </li>
+    </ul>
+  </div>
+</div>
+{% endblock %}
