@@ -1,9 +1,5 @@
 {% extends 'base.html' %} {% block head %}
 <style>
-  .app {
-    background-color: #bd5401;
-    height: 100vh;
-  }
   .container {
     display: flex;
     flex-direction: column;
@@ -11,130 +7,6 @@
     align-items: center;
     height: 100vh;
     width: 100%;
-  }
-  .signup-form .form-heading {
-    margin-bottom: 1em;
-  }
-  .signup-form {
-    padding: 25px;
-    background-color: white;
-    border-radius: 18px;
-    width: 80%;
-  }
-
-  .signup-form .signup-btn,
-  .form-control {
-    width: 100%;
-    height: 40px;
-    outline: none;
-    border: none;
-    border-radius: 8px;
-    font-size: 16px;
-  }
-  .signup-form .signup-btn:hover {
-    /* background-color: #bd5401; */
-    color: #ffffff;
-  }
-  .signup-form .signup-btn:hover .background-animate {
-    height: 100%;
-    width: 100%;
-    opacity: 1;
-  }
-  .signup-form .signup-btn .background-animate {
-    background-color: #bd5401;
-    position: absolute;
-    z-index: 5;
-    height: 100%;
-    width: 0;
-    opacity: 0;
-    transition: all 0.2s ease-in-out;
-  }
-  .signup-form .signup-btn .btn-title {
-    position: relative;
-    text-align: center;
-    width: 100%;
-    z-index: 10;
-  }
-  .signup-form .signup-btn {
-    cursor: pointer;
-    position: relative;
-    overflow: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-  }
-  .signup-form .form-control {
-    background-color: #f3f3f3;
-    margin-bottom: 1em;
-    text-indent: 1em;
-  }
-  @media screen and (min-width: 768px) {
-    .signup-form {
-      width: 35%;
-    }
-  }
-  @media screen and (min-width: 1024px) {
-    .signup-form {
-      width: 30%;
-    }
-  }
-  @media screen and (min-width: 1200px) {
-    .signup-form {
-      width: 25%;
-    }
-  }
-  @media screen and (min-width: 1500px) {
-    .signup-form {
-      width: 18%;
-    }
-  }
-  .auth-header {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  .auth-header h3 {
-    color: #ffffff;
-    padding: 20px;
-    font-weight: 600;
-  }
-
-  .app-links {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  .app-links ul {
-    list-style: none;
-    display: flex;
-    column-gap: 15px;
-    padding: 16px;
-  }
-  .app-links ul .link:hover .bar {
-    width: 100%;
-  }
-  .app-links ul .link .bar {
-    height: 2px;
-    width: 0;
-    background: #d2d2d2;
-    transition: all 0.2s ease-in-out;
-    align-self: center;
-  }
-  .app-links ul .link {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  .app-links ul .link a {
-    cursor: pointer;
-    text-decoration: none;
-    color: #d2d2d2;
-    font-size: 1em;
-    font-weight: 600;
-  }
-  .app-links ul .link.active .bar {
-    width: 100% !important;
   }
 </style>
 {% endblock %} {% block content %}
@@ -157,21 +29,27 @@
       </ul>
     </div>
   </div>
-  <div class="signup-form">
+  <div class="app-form">
     <div class="form-heading">
       <h4>Admin Panel</h4>
       <p>Request for admin access</p>
     </div>
 
-    <form action="" method="post" onsubmit="return false">
-      <input type="text" placeholder="First Name" class="form-control" />
-      <input type="text" class="form-control" placeholder="Last Name" />
-      <input type="text" placeholder="Email Address" class="form-control" />
-      <input type="text" class="form-control" placeholder="User Id" />
-      <input type="password" placeholder="Password" class="form-control" />
-      <input type="password" class="form-control" placeholder="Confirm Password" />
+    <form action="/register" method="post">
+      <input type="text" name="firstname" placeholder="First Name" class="form-control" />
+      <input type="text" name="lastname" class="form-control" placeholder="Last Name" />
+      <input type="email" name="email" placeholder="Email Address" class="form-control" />
+      <input type="text" name="username" class="form-control" placeholder="User Id" />
+      <input type="password" name="password" placeholder="Password" class="form-control" />
+      {{error_message}}
+      <input
+        type="password"
+        name="confirm_password"
+        class="form-control"
+        placeholder="Confirm Password"
+      />
 
-      <button class="signup-btn">
+      <button class="form-btn">
         <div class="background-animate"></div>
         <div class="btn-title">Request</div>
       </button>
