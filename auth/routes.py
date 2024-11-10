@@ -66,7 +66,6 @@ def logout():
     session.pop("authenticated", None)
     return redirect(url_for("auth.login"))
 
-
 @auth_bp.route("/forgot-password")
 def forgot_password():
     return render_template("forgot-password.html", title="Forgot Password")
